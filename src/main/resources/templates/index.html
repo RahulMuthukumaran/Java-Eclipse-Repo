@@ -1,0 +1,30 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Index</title>
+</head>
+<body>
+  <h1>This is index.html!</h1>
+<table th:if="${studentList != null AND studentList != ''}">
+<tr th:each="s : ${studentList}">
+<td th:text="${s.name}">Frank</td>
+</tr>
+</table>
+<br><hr><br>
+
+<form method="post" action="" th:action="@{/insertStudent}"
+th:object="${student}">
+<input type="hidden" name="id" th:field="*{id}"/>
+Name: <input type="text" name="name" th:field="*{name}" /><br>
+<input type="submit" value="Go!" />
+</form>
+<br>
+SEARCHER:
+<br>
+<form method="post" action="" th:action="@{/searchStudent}" th:object="${student}">
+Filter: <input type="text" name="name" th:field="*{name}" /><br>
+<input type="submit" value="Go!" />
+</form>
+</body>
+</html>

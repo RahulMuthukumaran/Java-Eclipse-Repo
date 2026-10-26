@@ -1,0 +1,29 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothes</title>
+</head>
+<body>
+<table th:if="${clothList != null AND clothList != ''}">
+<tr th:each="s : ${clothList}">
+<td th:text="${c.brand}">Dior</td>
+</tr>
+</table>
+<br><hr><br>
+
+<form method="post" action="" th:action="@{/insertClothing}"
+th:object="${clothes}">
+<input type="hidden" name="id" th:field="*{id}"/>
+Brand: <input type="text" name="brand" required th:field="*{brand}" /><br>
+Price: <input type="number" name="price" required th:field="*{price}" /><br>
+Size: <input type="text" name="size" th:field="*{size}" /><br>
+Colour: <input type="text" name="colour" th:field="*{colour}" /><br>
+Type: <input type="text" name="type" th:field="*{type}" /><br>
+Target: <input type="text" name="target" th:field="*{target}" /><br>
+<input type="submit" value="Go!" />
+</form>
+<br>
+<p><a href="/"> home page</a></p>
+</body>
+</html>
